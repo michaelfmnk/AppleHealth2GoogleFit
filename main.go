@@ -10,8 +10,8 @@ const (
 )
 
 type CLI struct {
-	ParseAppleHealthXML ParseAppleHealthXML `cmd:"" help:"Parse Apple Health XML file"`
-	ImportGoogleFitness ImportGoogleFitness `cmd:"" help:"Import Google Fitness data"`
+	ParseAppleHealthXML ParseAppleHealthXML `cmd:"" help:"Parse Apple Health XML file" name:"parse"`
+	ImportGoogleFitness ImportGoogleFitness `cmd:"" help:"Import Google Fitness data" name:"import"`
 }
 
 func main() {
