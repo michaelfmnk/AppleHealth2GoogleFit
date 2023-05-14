@@ -1,4 +1,4 @@
-module AppleHealth2GoogleFit
+module github.com/michaelfmnk/AppleHealth2GoogleFit
 
 go 1.20
 
