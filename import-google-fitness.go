@@ -71,7 +71,6 @@ func (a *ImportGoogleFitness) Run() error {
 	}
 
 	return nil
-
 }
 
 func (a *ImportGoogleFitness) prepareDataSource() (*fitness.DataSource, error) {
@@ -186,15 +185,18 @@ func (a *ImportGoogleFitness) prepareDataPoints(records [][]string, ds *fitness.
 			continue
 		}
 
-		t, err := time.Parse(DateLayout, record[0])
+		recordTime, err := time.Parse(DateLayout, record[0])
 		if err != nil {
 			return nil, err
 		}
-		val, _ := strconv.ParseFloat(record[1], 64)
+		val, err := strconv.ParseFloat(record[1], 64)
+		if err != nil {
+			continue
+		}
 		points = append(points, &fitness.DataPoint{
 			DataTypeName:   "com.google.weight",
-			StartTimeNanos: t.UnixNano(),
-			EndTimeNanos:   t.UnixNano(),
+			StartTimeNanos: recordTime.UnixNano(),
+			EndTimeNanos:   recordTime.UnixNano(),
 			Value: []*fitness.Value{
 				{
 					FpVal: val,
