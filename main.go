@@ -5,10 +5,6 @@ import (
 	"github.com/alecthomas/kong"
 )
 
-const (
-	Scope = "https://www.googleapis.com/auth/fitness.body.write"
-)
-
 type CLI struct {
 	ParseAppleHealthXML ParseAppleHealthXML `cmd:"" help:"Parse Apple Health XML file" name:"parse"`
 	ImportGoogleFitness ImportGoogleFitness `cmd:"" help:"Import Google Fitness data" name:"import"`
